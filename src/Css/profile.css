@@ -1,0 +1,20 @@
+.card-bodyy{
+         width: 500px;
+          
+}
+.card-bodyy input {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+@media (max-width: 600px) {
+          .card-bodyy {
+            width: 100%;
+            padding: 10px;
+          }
+          .card-bodyy input {
+            
+            padding: 2px;
+          }
+         
+        }
