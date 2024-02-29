@@ -84,9 +84,9 @@ export default function SingleProduct() {
 
   {/* Column 2: Name, Description, Price */}
   <div className="col-lg-4  mb-3 b">
-    <div className="text-center">
+    <div className="text-center product-single-heading">
       <div>
-        <h1>{singleProduct.name}</h1>
+        <h3 className="container" >{singleProduct.name}</h3>
         <p>{singleProduct.description}</p>
        <AverageRating  id={_id} onReviewAdded={handleReviewAdded}/>
        

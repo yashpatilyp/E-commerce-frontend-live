@@ -53,7 +53,7 @@ console.log('formData:', formData);
           <ToastContainer/>
 
       <div className="col-md-12 d-flex justify-content-center mt-5 mb-5">
-        <div className="card m-3 shadow">
+        <div className="card m-3 shadow p-3">
           <h2 className="p-2 m-1">Add Product</h2>
           <div className="card-body">
             <>

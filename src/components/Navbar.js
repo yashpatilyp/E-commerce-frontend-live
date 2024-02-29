@@ -9,7 +9,7 @@ export default function Navbar() {
   const isAdmin = user && user.isAdmin;
 
   return (
-    <div style={{ position: 'sticky', top: '63px', zIndex: '1000' }}>
+    <div style={{ position: 'sticky', top: '60px', zIndex: '1000' }}>
          
       <ul className="nav justify-content-center align-items-center subnav">
   {/* <!-- Home link --> */}

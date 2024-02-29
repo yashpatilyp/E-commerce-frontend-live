@@ -118,7 +118,7 @@ export default function Signup() {
         type="number"
         className="form-control mt-2"
         id="exampleFormControlInput2"
-        placeholder="name@example.com"
+        placeholder="Enter Mobile Number"
         value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)}
       />
     </div>
@@ -128,7 +128,7 @@ export default function Signup() {
         type="text"
         className="form-control mt-2"
         id="exampleFormControlInput2"
-        placeholder="name@example.com"
+        placeholder="Enter Address"
         value={address} onChange={(e) => setAddress(e.target.value)}
       />
     </div>

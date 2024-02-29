@@ -335,6 +335,7 @@
   }
   
   /* product  */
+  
   .carousel{
     background-color: #f7e8e4;
     padding: 15px;
@@ -943,4 +944,10 @@ align-items: center;
 }
 
 
-
+@media (max-width: 600px) {
+  .product-single-heading h1 {
+    font-size: 20px;
+    
+  }
+ 
+}

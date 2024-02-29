@@ -68,7 +68,7 @@ export default function AddReview({ id, onReviewAdded }) {
       
       <form className="container d-flex justify-content-center mb-5" onSubmit={AddReview}>
         
-        <div className='w-60 '>
+        <div className='w-60 p-3'>
           <h1>Write a review..</h1>
           {successMessage && (
             <div className="alert alert-success" role="alert">
