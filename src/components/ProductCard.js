@@ -17,7 +17,7 @@ export default function ProductCard({ product }) {
       <div className="card shadow " style={{ height: '600px', overflow: 'auto' }}>
         <div onClick={handleCardClick}>
           <img
-            src={`${API_BASE_URL}/${product.picture}`}
+            src={product.picture}
             height={250}
             className="card-img-top"
             alt={product.name}

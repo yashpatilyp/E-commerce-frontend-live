@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import { API_BASE_URL } from '../config';
 
@@ -11,47 +11,65 @@ export default function AddProducts() {
   const [quantity, setQuantity] = useState('');
   const [picture, setPicture] = useState(null);
 
-  const AddProduct = async () => {
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setPicture(file);
+  };
+  const addProduct = async (e) => {
+    e.preventDefault();
+  
     try {
-      const formData = new FormData();
-      formData.append('name', productName);
-      formData.append('price', price);
-      formData.append('mrp', mrp);
-      formData.append('description', description);
-      formData.append('quantity', quantity);
-      formData.append('picture', picture);
-console.log('formData:', formData);
-      const response = await axios.post(
-        `${API_BASE_URL}/api/products`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        toast.success('Product added successfully', { autoClose: 1000 });
-        setDescription('')
-        setMrp('')
-        setPicture('')
-        setProductName('')
-        setQuantity('')
-        setPrice('')
-      } else {
-        toast.error('Error', { autoClose: 1000 });
+      // Check if picture is selected
+      if (!picture) {
+        toast.error('Picture is required');
+        return;
       }
+  
+      // Append all data to FormData for the backend API request
+      const formDataForBackend = new FormData();
+      formDataForBackend.append('name', productName);
+      formDataForBackend.append('price', price);
+      formDataForBackend.append('mrp', mrp);
+      formDataForBackend.append('description', description);
+      formDataForBackend.append('quantity', quantity);
+      formDataForBackend.append('picture', picture);
+  
+      console.log('FormData for Backend:', formDataForBackend);
+  
+      // Send data to backend API
+      const productResponse = await axios.post(
+        `${API_BASE_URL}/api/products`,
+        formDataForBackend
+      );
+  
+      if (productResponse.status >= 200 && productResponse.status < 300) {
+        console.log('Product added successfully:', productResponse.data);
+        // Reset form fields
+        setProductName('');
+        setPrice('');
+        setMrp('');
+        setDescription('');
+        setQuantity('');
+        setPicture(null);
+      } else {
+        console.error('Error response from server:', productResponse);
+      }
+      
     } catch (error) {
-      toast.error('Error:', error.message);
+      console.error('Error adding product:', error);
     }
   };
+  
+
+
+
+
           
   return (
     <div>
       <div>
           <ToastContainer/>
-
+          <form  onSubmit={(e) => addProduct(e)}>
       <div className="col-md-12 d-flex justify-content-center mt-5 mb-5">
         <div className="card m-3 shadow p-3">
           <h2 className="p-2 m-1">Add Product</h2>
@@ -111,7 +129,7 @@ console.log('formData:', formData);
                 <input
                   type="file"
                   className="col-sm-8 text-secondary"
-                  onChange={(e) => setPicture(e.target.files[0])}
+                  accept="image/*" onChange={handleImageChange}
                 />
               </div>
              
@@ -122,7 +140,7 @@ console.log('formData:', formData);
                   <h6 className="mb-0">Quantity</h6>
                 </div>
                 <input
-                  type="text"
+                  type="number"
                   className="col-sm-8 text-secondary"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
@@ -131,7 +149,7 @@ console.log('formData:', formData);
              
               <div className="row mb-3">
                 <div className="col-sm-12">
-                  <button className="btn btn-info" onClick={AddProduct}>
+                  <button className="btn btn-info"type="submit" >
                     Add Product
                   </button>
                 </div>
@@ -140,6 +158,7 @@ console.log('formData:', formData);
           </div>
         </div>
       </div>
+    </form>
     </div>
     </div>
   )

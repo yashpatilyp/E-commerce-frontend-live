@@ -41,7 +41,7 @@ export default function AllProducts() {
         <div key={product._id} className="col mb-4">
           <div className="card h-100 shadow" onClick={() => handleCardClick(product._id)}>
             <img
-              src={`${API_BASE_URL}/${product.picture}`}
+              src={product.picture}
               height={250}
               className="card-img-top"
               alt={product.name}
