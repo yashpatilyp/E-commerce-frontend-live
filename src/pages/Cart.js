@@ -60,7 +60,7 @@ const checkout = () =>{
                 {/* Product image */}
                 <div className="col-md-4 col-sm-12 mb-3">
                   <img
-                    src={`${API_BASE_URL}/${item.picture}`}
+                    src={item.picture}
                     className="img-fluid"
                     alt="Product Image"
                   />
