@@ -17,7 +17,7 @@
       
       .row_1 {
           margin: 10px;
-          height: 300px;
+          height: 350px;
           padding: 10px 0px;
           background-color: antiquewhite;
       }
@@ -59,7 +59,8 @@
       
       .summary h1 {
           background-color: antiquewhite;
-          margin: 10px;
+          margin-bottom: 30px;
+          
       }
       
       .summary-content {
@@ -130,7 +131,19 @@
       .noselect:focus {
           outline: none;
       }
-      
+      @media (max-width: 600px) {
+        .cart h1{
+            font-size: 20px;
+        }
+        .summary h1{
+        font-size: 20px;
+        margin:0px
+        }
+        .summary h5 {
+            font-size: 15px;
+           
+        }
+      }
       @media (max-width: 1200px) {
           .container {
               display: flex;

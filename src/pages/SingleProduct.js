@@ -70,7 +70,7 @@ export default function SingleProduct() {
         </div>
       )}
        {singleProduct && (
-      <div className="d-flex flex-wrap p-5 m-2 singleProduct_container info">
+      <div className="d-flex flex-wrap p-3 m-3 singleProduct_container info">
   {/* Column 1: Image */}
   <div className="col-lg-4  mb-3 a">
     <div className="text-center ">
@@ -78,15 +78,16 @@ export default function SingleProduct() {
         src={singleProduct.picture}
         alt={singleProduct.name}
         className="img-fluid"
+        style={{height:"350px"}}
       />
     </div>
   </div>
 
   {/* Column 2: Name, Description, Price */}
-  <div className="col-lg-4  mb-3 b">
+  <div className=" col-lg-4  mb-3 p-3">
     <div className="text-center product-single-heading">
       <div>
-        <h3 className="container" >{singleProduct.name}</h3>
+        <h5 className="container" >{singleProduct.name}</h5>
         <p>{singleProduct.description}</p>
        <AverageRating  id={_id} onReviewAdded={handleReviewAdded}/>
        
@@ -104,10 +105,10 @@ export default function SingleProduct() {
   {/* Column 3: Add to Cart Button */}
   
 <div className="col-lg-4 mb-3 c">
-  <div className="text-center productContainer">
+  <div className="card shadow text-center productContainer">
     <h5>Price: ₹ {singleProduct.price}</h5>
     <div>
-      <AverageRating id={_id} />
+      <AverageRating id={_id} onReviewAdded={handleReviewAdded}/>
     </div>
     
     <h5>Status : In Stock </h5>

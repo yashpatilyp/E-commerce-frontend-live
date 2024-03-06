@@ -11,7 +11,8 @@ const ACTIONS = {
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
   UPDATE_QUANTITY: 'UPDATE_QUANTITY',
   INCREMENT_COUNTER: 'INCREMENT_COUNTER',
-  DECREMENT_COUNTER: 'DECREMENT_COUNTER'
+  DECREMENT_COUNTER: 'DECREMENT_COUNTER',
+ 
 };
 
 // Step 3: Define the reducer function
@@ -71,7 +72,7 @@ function cartReducer(state, action) {
             ),
           };
 
-          
+        
     default:
       return state;
   }

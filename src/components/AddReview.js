@@ -68,8 +68,8 @@ export default function AddReview({ id, onReviewAdded }) {
       
       <form className="container d-flex justify-content-center mb-5" onSubmit={AddReview}>
         
-        <div className='w-60 p-3'>
-          <h1>Write a review..</h1>
+        <div className='w-60 p-3 summary card m-3 shadow'>
+          <h1 className=''>Write a review..</h1>
           {successMessage && (
             <div className="alert alert-success" role="alert">
               {successMessage}
@@ -112,7 +112,7 @@ export default function AddReview({ id, onReviewAdded }) {
             />
           </div>
          
-          <button type="submit" className="btn btn-review w-100 mb-5">
+          <button type="submit" className="btn btn-review w-100 ">
             Submit
           </button>
         </div>

@@ -784,15 +784,19 @@ align-items: center;
   bottom: 10px;
 }
 
+/* //single product page css    */
 
 .productContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #ffffff;
-  padding: 15px;
-  border-radius: 5px;
+ 
+  padding: 10px;
+  border-radius: 10px;
   margin-bottom: 15px;
+  max-width: 300px;
+ margin-left: auto;
+ margin-right: auto;
 }
 
 .productContainer h5 {

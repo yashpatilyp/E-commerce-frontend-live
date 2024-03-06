@@ -38,7 +38,7 @@ console.log(id)
     <>
    
        {reviews && (
-        <div className="container text-center mt-4" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+        <div className="container text-center mt-4 summary" style={{ maxHeight: '400px', overflowY: 'auto' }}>
       
       <h1 style={{ position: 'sticky', top: '0', backgroundColor: '#fff', zIndex: '1000' }}>Reviews</h1>
       {loading && (
@@ -54,7 +54,7 @@ console.log(id)
             <div className="card-body" style={{marginLeft:"auto",marginRight:"auto"}}>
               <h3 className="card-title">{review.author.firstname} {review.author.lastname}</h3>
               <p className="card-text">Rating: {generateStarRating(review.rating)}</p>
-              <h5 className="card-subtitle mb-2 text-muted">Date: {new Date(review.createdAt).toLocaleDateString()}</h5>
+              <p className="card-subtitle mb-2 text-muted">Date: {new Date(review.createdAt).toLocaleDateString()}</p>
               <p className="card-text">Comments: {review.comments}</p>
             </div>
           </div>
