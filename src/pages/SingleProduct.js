@@ -75,7 +75,7 @@ export default function SingleProduct() {
   <div className="col-lg-4  mb-3 a">
     <div className="text-center ">
       <img
-        src={`${API_BASE_URL}/${singleProduct.picture}`}
+        src={singleProduct.picture}
         alt={singleProduct.name}
         className="img-fluid"
       />
