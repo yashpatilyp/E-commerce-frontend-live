@@ -20,11 +20,15 @@ function cartReducer(state, action) {
   switch (action.type) {
     case ACTIONS.ADD_TO_CART:
       const newItem = action.payload;
-      const existingItemIndex = state.cartItems.findIndex(item => item._id === newItem._id);
+    
+      // Ensure that state.cartItems is an array or initialize it as an empty array
+      const cartItemsArray = Array.isArray(state.cartItems) ? state.cartItems : [];
+    
+      const existingItemIndex = cartItemsArray.findIndex(item => item._id === newItem._id);
     
       if (existingItemIndex !== -1) {
         // If item already exists in the cart, update quantity and increment counter
-        const updatedCartItems = [...state.cartItems];
+        const updatedCartItems = [...cartItemsArray];
         const existingItem = updatedCartItems[existingItemIndex];
         existingItem.quantity += newItem.quantity;
         existingItem.counter += 1;
@@ -38,10 +42,11 @@ function cartReducer(state, action) {
         newItem.counter = 1;
         return {
           ...state,
-          cartItems: [...state.cartItems, newItem],
+          cartItems: [...cartItemsArray, newItem],
         };
       }
-    
+
+      
     case ACTIONS.REMOVE_FROM_CART:
       const updatedCartItems = state.cartItems.filter(
         (item) => item._id !== action.payload

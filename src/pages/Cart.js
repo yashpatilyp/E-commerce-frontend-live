@@ -23,6 +23,7 @@
     };
   
     const handleSizeChange = (itemId, newSize) => {
+      
       setSelectedSizes((prevSizes) => ({ ...prevSizes, [itemId]: newSize }));
       // Save the selected size in local storage
       updateLocalStorage(itemId, newSize);
@@ -94,6 +95,7 @@
     
       
       >
+        <option value="">select size</option>
         <option value="M">M</option>
         <option value="XL">XL</option>
         <option value="XXL">XXL</option>

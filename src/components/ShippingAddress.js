@@ -14,16 +14,15 @@
 
     const navigate = useNavigate();
 
-    const AddShippingAddress = (event) => {
-      
+    const AddShippingAddress = async (event) => {
       event.preventDefault();
-
+  
       const authToken = localStorage.getItem("token");
       const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${authToken}`,
       };
-
+  
       const requestData = {
         fullname: fullname,
         mobilenumber: mobile,
@@ -31,40 +30,39 @@
         postalcode: postalcode,
         city: city
       }
-
-      axios.post(`${API_BASE_URL}/addShipping-Address`,requestData, { headers: headers })
-        .then((result) => {
-          if (result.status === 200) {
-            console.log(result);
-            toast.success("Shipping Address added successfully", { autoClose: 1000 });
+  
+      try {
+        const result = await axios.post(`${API_BASE_URL}/addShipping-Address`, requestData, { headers: headers });
+  
+        if (result.status === 200) {
+          console.log(result);
+          toast.success("Shipping Address added successfully", { autoClose: 1000 });
+          localStorage.setItem('postalcode', postalcode);
+          setFullname('');
+          setMobile('');
+          setAddress('');
+          setPostalCode('');
+          setCity('');
+          nextStep();
+        }
+      } catch (error) {
+        console.error(error);
+        
+        // Handle registration failure and display appropriate error messages
+        if (error.response && error.response.data.error) {
+          const errorMessage = error.response.data.error;
+  
+          if (errorMessage === 'Shipping address already exists for this user') {
+            toast.warning(errorMessage);
             localStorage.setItem('postalcode', postalcode);
-            setFullname('');
-            setMobile('');
-            setAddress('');
-            setPostalCode('');
-            setCity('');
-            nextStep()
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-
-          // Handle registration failure and display appropriate error messages
-          if (error.response.data.error) {
-            const errorMessage = error.response.data.error;
-            
-            if (errorMessage === 'Shipping address with the provided postalcode already exists') {
-              toast.warning(errorMessage);
-              localStorage.setItem('postalcode', postalcode);
-              nextStep()
-            } else {
-              toast.error("Missing required fields");
-            
-            }
+            nextStep();
           } else {
-            toast.error("Some error occurred");
+            toast.error(errorMessage);
           }
-        });
+        } else {
+          toast.error("Some error occurred");
+        }
+      }
     };
 
     return (
