@@ -59,15 +59,16 @@ export default function Products() {
 
   return (
     <>
-      {loading ? (
-        // Render a loading icon or spinner while data is being fetched
-        <div className="text-center mt-5 mb-5">
-          <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
-          <p>Loading Products...</p>
-        </div>
-      ) : (
+      
         <div className="container mt-4 mb-4 summary">
           <h1 className="text-center ">FEATURED PRODUCTS</h1>
+          {loading ? (
+        // Render a loading icon or spinner while data is being fetched
+        <div className="text-center d-flex justify-content-center align-items-center" style={{height:"400px"}}>
+        <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+        
+      </div>
+      ) : (
           <div className="row p-4">
             <div className="col">
               <Slider {...slickSettings}>
@@ -79,8 +80,9 @@ export default function Products() {
               </Slider>
             </div>
           </div>
+             )}
         </div>
-      )}
+   
     </>
   );
 }

@@ -66,16 +66,17 @@ const placeorder =()=>{
   localStorage.removeItem('cartData')
 }
   return (
-          <div style={{minHeight:"500px"}}>
-<h1>Preview Order</h1>
+          <div style={{minHeight:"500px"}} className='summary'>
+<h1 >__ Preview Order __</h1>
       
-          <div className="container mt-4 mb-4" >
+          <div className="container mt-2 mb-4" >
            
             <div className="row">
 
               <div className="col-lg-8 cart">
               <div className='col-md-11 p-2 m-2 ' >
-  <h4 className=''>Shipping : </h4>
+  <h4 className=''>Shipping <i class="fa-solid fa-truck-fast" style={{color:"black"}}></i> </h4>
+  <hr />
   {filteredAddresses.length > 0 ? (
       <div className=''>
         <h6 className='mb-0'>Name: {filteredAddresses[0].fullname}</h6>
@@ -86,15 +87,17 @@ const placeorder =()=>{
     ) : (
       <p>No matching shipping addresses available</p>
     )}
+   
 </div>
 
             <h4 className='p-2 m-2'>Items :</h4>
+            
                  {cartItems.map((item) => (
-                  <div key={item.id} className="row  p-2 m-2"style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)"}}>
+                  <div key={item.id} className="row  p-2 m-2"style={{ backgroundColor:"whitesmoke",boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)"}}>
                     {/* Product image */}
-                    <div className="col-md-4 col-sm-12 mb-3">
+                    <div className="col-md-4 col-sm-12 ">
                       <img
-                        src={`${API_BASE_URL}/${item.picture}`}
+                        src={item.picture}
                         className="img-fluid"
                         alt="Product Image"
                       />
