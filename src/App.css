@@ -76,7 +76,7 @@
     font-weight: 600;
     
     width: 100%;
-    padding: 5px 5px;
+    padding: 10px 10px;
     box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
     height: 40px;
    background-color: #f55951;
@@ -200,9 +200,11 @@
   
   
   /* footer  */
+  
   .footer   {
    background-color: #361d32;
    color: #edd2cb;
+   
   }
   .nav-items a{
     color: #edd2cb;
@@ -213,7 +215,9 @@
    
     padding-bottom: 5px;
   }
-  
+  .social-icons hr {
+    margin: 0px;
+  }
   
   .social-icons a
   {
@@ -242,13 +246,13 @@
   }
   
   .social-icons a {
-    width: 44px;
-    height: 44px;
-    background-color:#020202;
-    color:#818a91;
+    width: 35px;
+    height: 35px;
+    background-color: #020202;
+    color: #818a91;
     text-align: center;
-    line-height: 44px;
-    font-size: 24px;
+    line-height: 35px;
+    font-size: 20px;
     display: inline-block;
     border-radius: 50%;
     -webkit-transition:all .2s linear;

@@ -66,8 +66,8 @@ export default function Products() {
           <p>Loading Products...</p>
         </div>
       ) : (
-        <div className="container mt-4 mb-4">
-          <h1 className="text-center">FEATURED PRODUCTS</h1>
+        <div className="container mt-4 mb-4 summary">
+          <h1 className="text-center ">FEATURED PRODUCTS</h1>
           <div className="row p-4">
             <div className="col">
               <Slider {...slickSettings}>

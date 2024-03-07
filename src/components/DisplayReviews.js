@@ -50,7 +50,7 @@ console.log(id)
       
       {reviews.length > 0 ? (
         reviews.map((review) => (
-          <div key={review._id} className="card mb-3" >
+          <div key={review._id} className="card mb-3 m-2" >
             <div className="card-body" style={{marginLeft:"auto",marginRight:"auto"}}>
               <h3 className="card-title">{review.author.firstname} {review.author.lastname}</h3>
               <p className="card-text">Rating: {generateStarRating(review.rating)}</p>

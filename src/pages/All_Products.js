@@ -34,8 +34,8 @@ export default function AllProducts() {
   };
 
   return (
-    <div className="container p-4 mt-2 mb-2 " >
-      <h1 className='mb-4'>SHOP__</h1>
+    <div className="container p-4 mt-2 mb-2 summary" >
+      <h1 className='mb-4'>___ SHOP <i class="fa-solid fa-bag-shopping"></i> ___</h1>
        <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
       {allProducts.map((product) => (
         <div key={product._id} className="col mb-4">

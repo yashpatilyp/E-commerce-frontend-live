@@ -56,7 +56,7 @@
             toast.warning(errorMessage);
             localStorage.setItem('postalcode', postalcode);
             nextStep();
-          } else {
+          } else {  
             toast.error(errorMessage);
           }
         } else {
