@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 export default function Profile() {
   const [userData, setUserData] = useState(null);
- 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,11 +26,14 @@ export default function Profile() {
         if (response.status === 200) {
           console.log(response.data);
           setUserData(response.data);
+          setLoading(false);
         } else {
           console.error("Failed ");
+          setLoading(false);
         }
       } catch (error) {
         console.error("Error :", error);
+        setLoading(false);
       }
     };
 
@@ -108,10 +111,18 @@ const handleDeleteAddress = async (addressId) => {
   }
 };
   return (
-    <div className="col-md-12 d-flex justify-content-center mt-5 mb-5">
+    <>
+      <div className="col-md-12 d-flex justify-content-center mt-5 mb-5" >
       <ToastContainer/>
       <div className="card m-3 shadow ">
         <h2 className="p-2 m-1">Profile Info</h2>
+        {loading ? (
+        // Render a loading icon or spinner while data is being fetched
+        <div className="text-center d-flex justify-content-center align-items-center" style={{height:"400px", width:"100%"}}>
+        <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+        
+      </div>
+      ) : (
         <div className="card-body card-bodyy ">
           {userData && userData.user && (
             <>
@@ -198,7 +209,11 @@ const handleDeleteAddress = async (addressId) => {
             </>
           )}
         </div>
+          )}
       </div>
     </div>
+   
+    </>
+    
   );
 }

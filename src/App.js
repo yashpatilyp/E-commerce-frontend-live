@@ -27,6 +27,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Payment from './components/Payment';
 import PlaceOrder from './components/PlaceOrder';
 import Checkout from './pages/Checkout';
+import Product_Table from './pages/Product_Table';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
 
           <Route path="/addProducts" element={<AddProducts />} />
           <Route path="/allProducts" element={<All_Products />} />
+          <Route path="/showproducts" element={<Product_Table />} />
 
           <Route path="/checkout" element={<Checkout />} />
           

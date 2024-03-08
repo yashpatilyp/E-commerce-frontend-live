@@ -86,7 +86,7 @@ export default function Profile_Edit() {
  
 
   return (
-    <div>
+    <div style={{height:"80vh"}}>
       <ToastContainer />
 
       <div className="col-md-12 d-flex justify-content-center mt-5 mb-5">

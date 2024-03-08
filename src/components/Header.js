@@ -35,6 +35,7 @@ export default function Header() {
               <h3>E Commerce</h3>
             </Link>
             {/* Navbar Toggler for Mobile View */}
+            
             <button
               className="navbar-toggler"
               type="button"
@@ -109,6 +110,15 @@ export default function Header() {
                       <li>
                         <Link class="dropdown-item" to="/profile">
                           Profile
+                        </Link>
+                      </li>
+                    ) : (
+                      ""
+                    )}
+                     {authToken ? (
+                      <li>
+                        <Link class="dropdown-item" to="/showproducts">
+                          All Products
                         </Link>
                       </li>
                     ) : (

@@ -77,7 +77,7 @@ export default function AddProducts() {
             <>
               <div className="row mb-3">
                 <div className="col-sm-3">
-                  <h6 className="mb-0"> Name</h6>
+                  <h6 className="mb-1"> Name</h6>
                 </div>
                 <input
                   type="text"
@@ -89,7 +89,7 @@ export default function AddProducts() {
              
               <div className="row mb-3">
                 <div className="col-sm-3">
-                  <h6 className="mb-0">Price</h6>
+                  <h6 className="mb-1">Price</h6>
                 </div>
                 <input
                   type="number"
@@ -101,7 +101,7 @@ export default function AddProducts() {
              
               <div className="row mb-3">
                 <div className="col-sm-3">
-                  <h6 className="mb-0">MRP</h6>
+                  <h6 className="mb-1">MRP</h6>
                 </div>
                 <input
                   type="number"
@@ -113,7 +113,7 @@ export default function AddProducts() {
              
               <div className="row mb-3">
                 <div className="col-sm-3">
-                  <h6 className="mb-0">Decription</h6>
+                  <h6 className="mb-1">Decription</h6>
                 </div>
                 <input
                   type="text"
@@ -124,7 +124,7 @@ export default function AddProducts() {
               </div>  
               <div className="row mb-3">
                 <div className="col-sm-3">
-                  <h6 className="mb-0">Picture</h6>
+                  <h6 className="mb-1">Picture</h6>
                 </div>
                 <input
                   type="file"
@@ -137,7 +137,7 @@ export default function AddProducts() {
              
               <div className="row mb-3">
                 <div className="col-sm-3">
-                  <h6 className="mb-0">Quantity</h6>
+                  <h6 className="mb-1">Quantity</h6>
                 </div>
                 <input
                   type="number"

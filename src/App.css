@@ -388,20 +388,7 @@
    
   }
   
-  @media (max-width: 990px) {
-    
-    .card-hide{
-      display: none;
-    }
-    
-  }
-  @media (max-width: 750px) {
-   
-    .card-hide-sm{
-      display: none;
-    }
-  
-  }
+
   .card_text {
     color:black;
     font-size: 0.875rem;
