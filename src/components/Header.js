@@ -26,8 +26,11 @@ export default function Header() {
   return (
     <div style={{ position: "sticky", top: "0", zIndex: "1001" }}>
       <>
+      
         {/* Navigation Bar */}
         <nav className="navbar navbar-expand-lg p-2 ">
+          
+          
           {/* Container for the navigation bar content */}
           <div className="container-fluid">
             {/* Brand Logo */}
@@ -115,7 +118,16 @@ export default function Header() {
                     ) : (
                       ""
                     )}
-                     {authToken ? (
+                    {isAdmin===true ? (
+                      <li>
+                        <Link class="dropdown-item" to="/user_profile">
+                         User Profiles
+                        </Link>
+                      </li>
+                    ) : (
+                      ""
+                    )}
+                     {isAdmin===true ? (
                       <li>
                         <Link class="dropdown-item" to="/showproducts">
                           All Products
@@ -124,6 +136,7 @@ export default function Header() {
                     ) : (
                       ""
                     )}
+                      
                     {authToken ? (
                       <li>
                         <a class="dropdown-item" href="/" onClick={logout}>

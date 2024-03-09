@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { API_BASE_URL } from '../config';
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import { API_BASE_URL } from '../../config';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Product_Table() {
+
   const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  //....................................................................................................................
 
   useEffect(() => {
     const apiUrl = `${API_BASE_URL}/api/products`;
@@ -16,8 +22,10 @@ export default function Product_Table() {
         const response = await fetch(apiUrl);
         const data = await response.json();
         setAllProducts(data);
+        setLoading(false);
         console.log(data);
       } catch (error) {
+        setLoading(false);
         console.error('Error fetching products:', error);
       }
     };
@@ -25,15 +33,16 @@ export default function Product_Table() {
     fetchProducts();
   }, []);
 
+
   //......................................................................................
+
   const user = JSON.parse(localStorage.getItem("user"));
-
-
   const isAdmin = user && user.isAdmin;
-console.log(isAdmin)
+  // console.log(isAdmin)
+
   const handleDeleteProduct = async (productId) => {
           try {
-            // Check if isAdmin is true before making the delete request
+            // Check if isAdmin is true 
             if (isAdmin===true) {
               const response = await axios.delete(`${API_BASE_URL}/api/products/${productId}`);
       
@@ -52,12 +61,33 @@ console.log(isAdmin)
           }
         };
 
+    //................................................................................................
+
+        const navigate = useNavigate();
+        const handleEdit = (productId) => {
+          navigate(`/edit_product/${productId}`);
+        };
+        
+      
   return (
     <div className='container summary'>
-      <h1>PRODUCTS</h1>
-      <div className="table-responsive">
+      <ToastContainer/>
+      <h1 className=''>PRODUCTS</h1>
+      {loading ? (
+       <div className="text-center d-flex justify-content-center align-items-center" style={{height:"400px"}}>
+       <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+       
+     </div>
+      ) : (
+      <div className="table-responsive container">
         <table className="table table-striped">
-          <thead>
+          <thead
+            style={{
+              position: "sticky",
+              top: 0,
+              zIndex: 1,
+              backgroundColor: "#f5f5f5",
+            }}>
             <tr>
               <th scope="col">SR</th>
               <th scope="col">NAME</th>
@@ -82,14 +112,18 @@ console.log(isAdmin)
                 </td>
                 <td>{product.quantity}</td>
                 <td>
-                  <FontAwesomeIcon icon={faEdit} style={{ color: "blue", cursor: "pointer" }} />{' '}
-                  <FontAwesomeIcon icon={faTrash} style={{ color: "red", cursor: "pointer" }}  onClick={() => handleDeleteProduct(product._id)} />
+                  <FontAwesomeIcon icon={faEdit} style={{ color: "blue", cursor: "pointer", marginRight:"10px"}}
+                  onClick={() => handleEdit(product._id)} />{' '}
+
+                  <FontAwesomeIcon icon={faTrash} style={{ color: "red", cursor: "pointer" }} 
+                   onClick={() => handleDeleteProduct(product._id)} />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      )}
     </div>
   );
 }

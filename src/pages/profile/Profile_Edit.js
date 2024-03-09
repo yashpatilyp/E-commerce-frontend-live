@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL } from "../../config";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import UpdatePassword from "../components/UpdatePassword";
+import UpdatePassword from "../../components/UpdatePassword";
 
 export default function Profile_Edit() {
   const [firstName, setFirstName] = useState("");

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL } from "../../config";
 import { useParams } from "react-router-dom";
-import AddReview from "../components/AddReview";
-import DisplayReviews from "../components/DisplayReviews";
-import { useCart } from '../context/CartContext';
-import AverageRating from "../components/AverageRating";
+import AddReview from "../../components/AddReview";
+import DisplayReviews from "../../components/DisplayReviews";
+import { useCart } from '../../context/CartContext';
+import AverageRating from "../../components/AverageRating";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function SingleProduct() {

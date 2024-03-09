@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { API_BASE_URL } from '../config';
-import AverageRating from '../components/AverageRating';
+
+import AverageRating from '../../components/AverageRating';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../config';
 
 export default function AllProducts() {
   const [allProducts, setAllProducts] = useState([]);

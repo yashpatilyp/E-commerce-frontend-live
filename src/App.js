@@ -14,20 +14,24 @@ import Signup from './pages/Signup';
 // index.js or App.js
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import SingleProduct from './pages/SingleProduct';
+import SingleProduct from './pages/products/SingleProduct';
 import Cart from './pages/Cart';
 
 import ShippingAddress from './components/ShippingAddress';
 import Navbar from './components/Navbar';
-import Profile from './pages/Profile';
-import Profile_Edit from './pages/Profile_Edit';
-import AddProducts from './pages/AddProducts';
-import All_Products from './pages/All_Products';
+import Profile from './pages/profile/Profile';
+import Profile_Edit from './pages/profile/Profile_Edit';
+
 import 'react-toastify/dist/ReactToastify.css';
 import Payment from './components/Payment';
 import PlaceOrder from './components/PlaceOrder';
 import Checkout from './pages/Checkout';
-import Product_Table from './pages/Product_Table';
+import AddProducts from './pages/products/AddProducts';
+import Product_Table from './pages/products/Product_Table';
+import AllProducts from './pages/products/All_Products';
+import Product_Edit from './pages/products/Product_Edit';
+import User_Profile from './pages/profile/User_Profile';
+
 
 
 function App() {
@@ -42,6 +46,9 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile_edit" element={<Profile_Edit />} />
+          <Route path="/user_profile" element={<User_Profile />} />
+
+
           <Route path="/singleProduct/:_id" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
 
@@ -51,8 +58,9 @@ function App() {
           <Route path="/placeorder" element={<PlaceOrder />} />
 
           <Route path="/addProducts" element={<AddProducts />} />
-          <Route path="/allProducts" element={<All_Products />} />
+          <Route path="/allProducts" element={<AllProducts/>} />
           <Route path="/showproducts" element={<Product_Table />} />
+          <Route path="/edit_product/:_id" element={<Product_Edit />} />
 
           <Route path="/checkout" element={<Checkout />} />
           

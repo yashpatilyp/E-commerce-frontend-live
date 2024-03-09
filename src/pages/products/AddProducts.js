@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../../config';
+
 
 export default function AddProducts() {
   const [productName, setProductName] = useState('');
