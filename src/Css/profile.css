@@ -30,3 +30,16 @@
     font-size: 13px;
   }
 
+
+  .profilee img {
+    height: 350px;
+
+  }
+@media (max-width:600px) {
+  .profilee img {
+    height: 200px;
+
+  }
+  
+}
+ 

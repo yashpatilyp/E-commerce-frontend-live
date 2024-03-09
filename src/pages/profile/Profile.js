@@ -112,7 +112,8 @@ const handleDeleteAddress = async (addressId) => {
   }
 };
   return (
-    <>
+    <div className="profilee">
+    <img src="https://png.pngtree.com/thumb_back/fh260/background/20220522/pngtree-ecommerce-banner-planning-segmentation-selection-image_1375247.jpg" alt="profile" srcset="" width={"100%"}  style={{objectFit:"cover"}} />
       <div className="col-md-12 d-flex justify-content-center mt-5 mb-5" >
       <ToastContainer/>
       <div className="card m-3 shadow ">
@@ -214,7 +215,7 @@ const handleDeleteAddress = async (addressId) => {
       </div>
     </div>
    
-    </>
+    </div>
     
   );
 }
