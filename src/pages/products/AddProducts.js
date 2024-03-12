@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import { API_BASE_URL } from '../../config';
 
 
+
 export default function AddProducts() {
   const [productName, setProductName] = useState('');
   const [price, setPrice] = useState('');
@@ -11,6 +12,7 @@ export default function AddProducts() {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState('');
   const [picture, setPicture] = useState(null);
+const [size, setSize] =useState('');
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -33,6 +35,7 @@ export default function AddProducts() {
       formDataForBackend.append('mrp', mrp);
       formDataForBackend.append('description', description);
       formDataForBackend.append('quantity', quantity);
+      formDataForBackend.append('size', size);
       formDataForBackend.append('picture', picture);
   
       console.log('FormData for Backend:', formDataForBackend);
@@ -45,12 +48,14 @@ export default function AddProducts() {
   
       if (productResponse.status >= 200 && productResponse.status < 300) {
         console.log('Product added successfully:', productResponse.data);
+        toast.success(productResponse.data)
         // Reset form fields
         setProductName('');
         setPrice('');
         setMrp('');
         setDescription('');
         setQuantity('');
+        setSize('');
         setPicture(null);
       } else {
         console.error('Error response from server:', productResponse);
@@ -72,7 +77,7 @@ export default function AddProducts() {
           <ToastContainer/>
           <form  onSubmit={(e) => addProduct(e)}>
       <div className="col-md-12 d-flex justify-content-center mt-5 mb-5">
-        <div className="card m-3 shadow p-3">
+        <div className="card m-3 shadow p-3 ">
           <h2 className="p-2 m-1">Add Product</h2>
           <div className="card-body">
             <>
@@ -111,7 +116,25 @@ export default function AddProducts() {
                   onChange={(e) => setMrp(e.target.value)}
                 />
               </div>
-             
+              <div className="row mb-3">
+                    <div className="col-sm-3">
+                      <h6 className="mb-1">Size</h6>
+                    </div>
+                    <select
+                      className="col-sm-8 text-secondary"
+                      value={size}
+                      onChange={(e) => setSize(e.target.value)}
+                    >
+                      <option value="" disabled>Select Size</option>
+                      <option value="S">S</option>
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                      <option value="XXL">XXL</option>
+
+                      {/* Add more size options as needed */}
+                    </select>
+                  </div>
               <div className="row mb-3">
                 <div className="col-sm-3">
                   <h6 className="mb-1">Decription</h6>

@@ -2,10 +2,11 @@
   import { useCart } from '../context/CartContext';
   import { API_BASE_URL } from '../config';
   import {useNavigate } from 'react-router-dom'
+  import {loadStripe} from '@stripe/stripe-js'
   export default function Cart() {
    
     const { state: { cartItems }, dispatch } = useCart();
-    const [selectedSizes, setSelectedSizes] = useState({});
+   
     const navigate = useNavigate();
   
     const handleRemoveFromCart = (itemId) => {
@@ -22,12 +23,7 @@
       dispatch({ type: 'DECREMENT_COUNTER', payload: itemId });
     };
   
-    const handleSizeChange = (itemId, newSize) => {
-      
-      setSelectedSizes((prevSizes) => ({ ...prevSizes, [itemId]: newSize }));
-      // Save the selected size in local storage
-      updateLocalStorage(itemId, newSize);
-    };
+   
   
     const updateLocalStorage = (itemId, newSize) => {
       const storedSizes = JSON.parse(localStorage.getItem('cartData')) || {};
@@ -53,8 +49,7 @@
   
 
     let cartLength = cartItems.length; 
-
-
+    
     return (
     
       <div style={{minHeight:"500px"}}>
@@ -84,24 +79,9 @@
                       </h5>
                       <div className="row mb-3 ">
     <div className="col-sm-12">
-      <h6 className="mb-0">Size :</h6>
+      <h5>Size : {item.size}</h5>
     </div>
-    <div className="col-sm-12">
-      <select
-        className=""
-        value={selectedSizes[item._id] || ''}
-        onChange={(e) => handleSizeChange(item._id, e.target.value)}
-       
     
-      
-      >
-        <option value="">select size</option>
-        <option value="M">M</option>
-        <option value="XL">XL</option>
-        <option value="XXL">XXL</option>
-        <option value="L">L</option>
-      </select>
-    </div>
   </div>
                     </div>
                     

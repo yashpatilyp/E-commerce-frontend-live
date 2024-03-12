@@ -41,7 +41,7 @@ export default function ProductCard({ product }) {
               {product.price}
               <p>₹ {product.mrp} /-</p>
             </h5>
-            <span>Size: M, L, XL</span>
+            <span>Size: {product.size}</span>
           </div>
         </div>
       </div>

@@ -69,8 +69,10 @@ export default function Header() {
               {/* Right-aligned Navbar Items */}
               <div className="ms-auto d-flex mt-1">
                 {/* Login Button */}
+                
                 <div class="dropdown">
                   <button
+                  
                     class="btn dropdown-toggle btn-login"
                     type="button"
                     id="dropdownMenuButton1"
@@ -103,7 +105,7 @@ export default function Header() {
                     {!authToken ? (
                       <li>
                         <Link class="dropdown-item" to="/login">
-                          Sign In
+                          Login
                         </Link>
                       </li>
                     ) : (

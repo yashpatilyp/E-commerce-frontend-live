@@ -35,8 +35,8 @@ const Checkout = () => {
             {/* fieldsets */}
             {step === 1 && <ShippingAddress nextStep={nextStep} />}
             
-            {step === 2 && <Payment nextStep={nextStep} />}
-            {step === 3 && <PlaceOrder nextStep={nextStep} />}
+            {step === 2 && <Payment  />}
+            {step === 3 && <PlaceOrder  />}
            
           </form>
         </div>

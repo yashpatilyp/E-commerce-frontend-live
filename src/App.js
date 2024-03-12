@@ -6,6 +6,8 @@ import './Css/profile.css'
 import './Css/allProducts.css'
 import './Css/Order.css'
 import './Css/payment.css'
+import './Css/contact.css'
+import './Css/success.css'
 import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -31,6 +33,9 @@ import Product_Table from './pages/products/Product_Table';
 import AllProducts from './pages/products/All_Products';
 import Product_Edit from './pages/products/Product_Edit';
 import User_Profile from './pages/profile/User_Profile';
+import Contact from './pages/Contact';
+import Success from './components/Success';
+import Cancel from './components/Cancel';
 
 
 
@@ -63,7 +68,12 @@ function App() {
           <Route path="/edit_product/:_id" element={<Product_Edit />} />
 
           <Route path="/checkout" element={<Checkout />} />
+
+         
+          <Route path="/contact" element={<Contact />} />
           
+         <Route path="/success" element={<Success />} />
+         <Route path="/cancel" element={<Cancel />} />
         </Routes>
 
         <Footer />

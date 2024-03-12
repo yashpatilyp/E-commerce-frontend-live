@@ -54,6 +54,7 @@ export default function SingleProduct() {
   };
 
   const { dispatch } = useCart();
+ 
   const handleAddToCart = () => {
     // Dispatch ADD_TO_CART action with the current product data
     dispatch({ type: 'ADD_TO_CART', payload: singleProduct });
@@ -96,7 +97,7 @@ export default function SingleProduct() {
         <h5>Price : ₹ {singleProduct.price}</h5>
         <p>Price : ₹ {singleProduct.price} /-</p>
       
-        <span>Size: M, L, XL</span>
+        <span>Size: {singleProduct.size}</span>
         <h6>Quantity  ({singleProduct.quantity})</h6>
       </div>
     </div>

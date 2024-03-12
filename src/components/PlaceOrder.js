@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { API_BASE_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
-
+import {loadStripe} from '@stripe/stripe-js'
 
 export default function PlaceOrder() {
   const { state: { cartItems }, dispatch } = useCart();
+  console.log(cartItems);
   const [shippingAddresses, setShippingAddresses] = useState([]);
   const authToken = localStorage.getItem("token");
+  const userDataString = localStorage.getItem("user");
+  const user = JSON.parse(userDataString);
+ 
+// Now 'user' is an object containing the parsed data
+console.log(user);
   const navigate = useNavigate();
 
   // Fetch shipping addresses from the backend when the component mounts
@@ -44,7 +50,7 @@ export default function PlaceOrder() {
         
         const calculateSubTotal = () => {
           return cartItems.reduce((total, item) => {
-            return total + item.price * item.counter;
+            return  total + item.price * item.counter;
           }, 0);
         };
         
@@ -61,16 +67,43 @@ export default function PlaceOrder() {
      
 //...............................................
 
-const placeorder =()=>{
-  localStorage.removeItem("postalcode");
-  localStorage.removeItem('cartData')
+const makePayment =async()=>{
+
+  const stripe = await loadStripe('pk_test_51N7vdjSD3r9BRhLaSVaV19xTJxXaSlfRddM2MRq2GcofsJc8ykfwDPpHXcRP1drgPl6TD30WhvGjnRUiGWBfGdZX00n7z4fp63');
+
+
+  const body ={
+    products:cartItems,
+    subtotal: calculateSubTotal(),
+    user:user,
+  }
+  const headers ={
+    "Content-Type": "application/json"
+  }
+const response = await fetch (`${API_BASE_URL}/api/create-checkout-session`,{
+  method: 'POST',
+  headers: headers,
+  body:JSON.stringify(body)
+})
+
+const session = await response.json();
+
+const result = stripe.redirectToCheckout({
+  sessionId:session.id
+ 
+})
+console.log(result)
+
+if (result.error){
+  console.log(result.error)
+}
 }
   return (
           <div style={{minHeight:"500px"}} className='summary'>
-<h1 >__ Preview Order __</h1>
+
       
           <div className="container mt-2 mb-4" >
-           
+          <h1 > Preview Order </h1>
             <div className="row">
 
               <div className="col-lg-8 cart">
@@ -146,7 +179,7 @@ const placeorder =()=>{
                   </div>
                   {/* Checkout button */}
                   <div className="row check">
-                    <button className="checkout-btn check" style={{width:"80%"}} onClick={placeorder}>
+                    <button className="checkout-btn check" style={{width:"80%"}} onClick={makePayment}>
                       Place Order <i className="fa-sharp fa-solid fa-check" />
                     </button>
                   </div>

@@ -25,7 +25,24 @@ export default function Navbar() {
               Home
             </Link>
           </li>
-
+          {!authToken ? (
+          <li className="nav-item">
+            <Link className="nav-link" to="/login">
+              Login
+            </Link>
+          </li>
+           ) : (
+            ""
+          )}
+           {!authToken ? (
+          <li className="nav-item">
+            <Link className="nav-link" to="/signup">
+              SignUp
+            </Link>
+          </li>
+           ) : (
+            ""
+          )}
           {/* All Products link */}
           <li className="nav-item">
             <Link className="nav-link" to="/allProducts">
@@ -43,7 +60,7 @@ export default function Navbar() {
 
           {/* Contact link */}
           <li className="nav-item">
-            <Link className="nav-link" href="/contact.html">
+            <Link className="nav-link" to="/contact">
               Contact
             </Link>
           </li>
@@ -87,6 +104,7 @@ export default function Navbar() {
                 </Link>
               </li>
             )}
+            
             <li className="nav-item">
               <Link className="nav-link" to="/contact.html">
                 Contact

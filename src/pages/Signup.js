@@ -86,7 +86,7 @@ export default function Signup() {
       <input
         type="text"
         className="form-control mt-2"
-        id="exampleFormControlInput2"
+       
         placeholder="Enter First Name"
         value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -97,7 +97,7 @@ export default function Signup() {
       <input
         type="text"
         className="form-control mt-2"
-        id="exampleFormControlInput2"
+       
         placeholder="Enter Last Name"
         value={lastName} onChange={(e) => setLastName(e.target.value)}
       />
@@ -107,7 +107,7 @@ export default function Signup() {
       <input
         type="email"
         className="form-control mt-2"
-        id="exampleFormControlInput2"
+     
         placeholder="name@example.com"
         value={email} onChange={(e) => setEmail(e.target.value)}
       />
@@ -117,7 +117,7 @@ export default function Signup() {
       <input
         type="number"
         className="form-control mt-2"
-        id="exampleFormControlInput2"
+       
         placeholder="Enter Mobile Number"
         value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)}
       />
@@ -127,7 +127,7 @@ export default function Signup() {
       <input
         type="text"
         className="form-control mt-2"
-        id="exampleFormControlInput2"
+       
         placeholder="Enter Address"
         value={address} onChange={(e) => setAddress(e.target.value)}
       />
@@ -138,7 +138,7 @@ export default function Signup() {
       <input
         type="password"
         className="form-control mt-2"
-        id="exampleFormControlInput1"
+       
         placeholder="Enter Password"
         value={password} onChange={(e) => setPassword(e.target.value)}
       />
