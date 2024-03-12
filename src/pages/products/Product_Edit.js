@@ -12,7 +12,7 @@ export default function Product_Edit() {
   const [quantity, setQuantity] = useState('');
   const [picture, setPicture] = useState(null);
   const [singleProduct, setSingleProduct] = useState(null);
-
+   const [size , setSize]= useState('');
   const [loading, setLoading] = useState(true);
   const { _id } = useParams();
 
@@ -80,6 +80,7 @@ export default function Product_Edit() {
         setPrice(data.price);
         setMrp(data.mrp);
         setQuantity(data.quantity);
+        setSize(data.size);
         setPicture(data.picture);
         setDescription(data.description);
         console.log(data);
@@ -106,6 +107,7 @@ const handleUpdate = async (e) => {
               price,
               mrp,
               description,
+              size,
               quantity,
               picture: cloudinaryUrl || picture, // Used the updated Cloudinary URL or the original picture
             };
@@ -124,6 +126,7 @@ const handleUpdate = async (e) => {
              setDescription('')
              setMrp('')
              setPicture('')
+             setSize('')
              setQuantity('')
              setPrice('')
 
@@ -263,6 +266,25 @@ const handleUpdate = async (e) => {
                     />
                   </div>
 
+                  <div className="row mb-3">
+                    <div className="col-sm-3">
+                      <h6 className="mb-1">Size</h6>
+                      </div>
+                  <select
+                      className="col-sm-8 text-secondary"
+                      value={size}
+                      onChange={(e) => setSize(e.target.value)}
+                    >
+                      <option value="" disabled>Select Size</option>
+                      <option value="S">S</option>
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                      <option value="XXL">XXL</option>
+
+                      {/* Add more size options as needed */}
+                    </select>
+                    </div>
                   <div className="row mb-3">
                     <div className="col-sm-12">
                       <button className="btn btn-info" type="submit">

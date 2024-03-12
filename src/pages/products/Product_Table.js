@@ -94,6 +94,7 @@ export default function Product_Table() {
               <th scope="col">PRICE</th>
               <th scope="col">MRP</th>
               <th scope="col">DESCRIPTION</th>
+              <th scope="col">SIZE</th>
               <th scope="col">PICTURE</th>
               <th scope="col">QUANTITY</th>
               <th scope="col">ACTION</th>
@@ -107,6 +108,7 @@ export default function Product_Table() {
                 <td className="text-nowrap">₹{product.price}</td>
                 <td className="text-nowrap">₹{product.mrp}</td>
                 <td >{product.description}</td>
+                <td >{product.size}</td>
                 <td>
                   <img src={product.picture} alt={product.name} style={{ maxWidth: '50px', maxHeight: '50px' }} />
                 </td>
