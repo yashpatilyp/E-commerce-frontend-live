@@ -147,6 +147,7 @@
                   <button className="checkout-btn check" onClick={checkout}>
                     Checkout <i className="fa-sharp fa-solid fa-check" />
                   </button>
+                  
                 </div>
               </div>
             </div>
