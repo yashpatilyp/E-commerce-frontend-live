@@ -46,8 +46,8 @@ export default function Success() {
         <div className="success-description m-0">
           UNIT AMOUNT
         </div>
-        <div className="success-description ">
-        ₹ {orderDetails.lineItems[0].price_data.unit_amount} /-
+        <div className="success-description">
+        ₹ {orderDetails.lineItems[0].price_data.unit_amount / 100} /-
         </div>
         <div className="order-details">
           <div className="order-number-label">Order ID:</div>
