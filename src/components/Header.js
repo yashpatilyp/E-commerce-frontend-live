@@ -138,6 +138,15 @@ export default function Header() {
                     ) : (
                       ""
                     )}
+                      {isAdmin===true ? (
+                      <li>
+                        <Link class="dropdown-item" to="/orders">
+                        Order History
+                        </Link>
+                      </li>
+                    ) : (
+                      ""
+                    )}
                       
                     {authToken ? (
                       <li>
