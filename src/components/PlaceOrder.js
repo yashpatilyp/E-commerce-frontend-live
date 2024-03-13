@@ -156,7 +156,7 @@ if (result.error){
               </div>
               {/* Right column for order summary */}
               <div className="col-lg-4 summary">
-                <h3 className="mb-4">Order Summary</h3>
+                <h4 className="mb-4 p-1">Order Summary</h4>
                 {/* Order summary details */}
                 <div className="row summary-content pt-2">
                   <div className="col">

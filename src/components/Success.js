@@ -19,6 +19,7 @@ export default function Success() {
           setOrderDetails(data);
           localStorage.removeItem('cartData');
           localStorage.removeItem('postalcode');
+          window.location.reload();
           console.log(data)
         } else {
           console.error('Error fetching order details:', response.statusText);

@@ -3,6 +3,7 @@
   import { API_BASE_URL } from '../config';
   import {useNavigate } from 'react-router-dom'
   import {loadStripe} from '@stripe/stripe-js'
+import { ToastContainer, toast } from 'react-toastify';
   export default function Cart() {
    
     const { state: { cartItems }, dispatch } = useCart();
@@ -39,11 +40,16 @@
     const authToken = localStorage.getItem('token');
   
     const checkout = () => {
-      if (authToken) {
-        navigate('/checkout');
+      if (cartItems.length === 0) {
+        toast.warning('Your cart is empty. Add some items before checkout.');
       } else {
-        alert('For Checkout, Login First ');
-        navigate('/login');
+        const authToken = localStorage.getItem('token');
+        if (authToken) {
+          navigate('/checkout');
+        } else {
+          alert('For Checkout, Login First ');
+          navigate('/login');
+        }
       }
     };
   
@@ -53,7 +59,7 @@
     return (
     
       <div style={{minHeight:"500px"}}>
-
+<ToastContainer/>
         
         <div className="container mt-4 mb-4" >
           <div className="row">
