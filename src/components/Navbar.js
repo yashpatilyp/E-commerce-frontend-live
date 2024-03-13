@@ -43,6 +43,7 @@ export default function Navbar() {
            ) : (
             ""
           )}
+          
           {/* All Products link */}
           <li className="nav-item">
             <Link className="nav-link" to="/allProducts">
@@ -57,6 +58,15 @@ export default function Navbar() {
               </Link>
             </li>
           ) : ''}
+           {authToken ? (
+          <li className="nav-item">
+            <Link className="nav-link" to="/user-orders">
+              Orders
+            </Link>
+          </li>
+           ) : (
+            ""
+          )}
 
           {/* Contact link */}
           <li className="nav-item">

@@ -73,11 +73,12 @@ export default function Header() {
                 <div class="dropdown">
                   <button
                   
-                    class="btn dropdown-toggle btn-login"
+                    class="btn dropdown-toggle  "
                     type="button"
                     id="dropdownMenuButton1"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
+                    style={{color:"black", fontWeight:"600" }}
                   >
                     {authToken ? (
                       <>
@@ -89,7 +90,7 @@ export default function Header() {
                         ) : (
                           // Display regular user content if isAdmin is false
                           <>
-                            {userFirstName} {userLastName} <i class="fa-solid fa-user"></i>
+                            {userFirstName} {userLastName} <i class="fa-solid fa-user" style={{color:"red"}}></i>
                           </>
                         )}
                       </>

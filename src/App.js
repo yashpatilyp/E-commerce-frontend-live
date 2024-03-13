@@ -37,6 +37,7 @@ import Contact from './pages/Contact';
 import Success from './components/Success';
 import Cancel from './components/Cancel';
 import Order_table from './pages/order/Order_table';
+import User_order_table from './pages/order/User_order_table';
 
 
 
@@ -74,6 +75,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/orders" element={<Order_table />} />
+          <Route path="/user-orders" element={<User_order_table />} />
+          
 
          <Route path="/success" element={<Success />} />
          <Route path="/cancel" element={<Cancel />} />

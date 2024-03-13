@@ -17,7 +17,7 @@ export default function Order_table() {
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        setOrders(data);
+        setOrders(data.reverse());
         setLoading(false);
         console.log(data);
       } catch (error) {
@@ -89,7 +89,7 @@ export default function Order_table() {
                 {orders.map((order, index) => (
                   <tr key={index}>
                     <th scope="row">{index + 1}</th>
-                    <th scope="row">{order._id}</th>
+                    <td scope="row">{order._id}</td>
                     {/* <td>   {order.lineItems.map((lineItem, i) => (
                       <p key={i}>{i + 1}. {lineItem.price_data.product_data.name}{i !== order.lineItems.length - 1 && ', '}</p>
                     ))}</td> */}
@@ -98,7 +98,9 @@ export default function Order_table() {
                     <td >{order.paymentId}</td>
                     <td style={{color:"green" , fontWeight:"500"}}>PAID</td>
                     <td style={{ color: "red", fontWeight: "500" , cursor:"pointer"}}>
-                    <p onClick={() => handleDetailsClick(order.paymentId)}>DETAILS</p>
+                    <p onClick={() => handleDetailsClick(order.paymentId)}>
+                    <button type="button" class="btn btn-primary btn-sm">Details</button>
+                    </p>
                   </td>
                 </tr>
               ))}
