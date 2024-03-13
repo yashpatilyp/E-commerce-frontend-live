@@ -93,7 +93,7 @@ export default function Order_table() {
                     {/* <td>   {order.lineItems.map((lineItem, i) => (
                       <p key={i}>{i + 1}. {lineItem.price_data.product_data.name}{i !== order.lineItems.length - 1 && ', '}</p>
                     ))}</td> */}
-                    <td className="text-nowrap"> ₹{order.lineItems.reduce((total, item) => total + item.price_data.unit_amount, 0) / 100}</td>
+                    <td className="text-nowrap"> ₹{order.lineItems.reduce((total, item) => total + (item.price_data.unit_amount*item.quantity), 0) / 100}</td>
                     <td className="text-nowrap">{order.user.firstname} {order.user.lastname}</td>
                     <td >{order.paymentId}</td>
                     <td style={{color:"green" , fontWeight:"500"}}>PAID</td>
