@@ -19,6 +19,27 @@ export default function Signup() {
  const register = (event) => {
    event.preventDefault();
   setLoading(true);
+
+  if (!firstName || !lastName || !email || !mobileNumber || !address || !password) {
+    setLoading(false);
+    return Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'All fields are required',
+    });
+  }
+
+  // Mobile number validation (for example, requiring 10 digits)
+  const mobileRegex = /^\d{10}$/;
+  if (!mobileRegex.test(mobileNumber)) {
+    setLoading(false);
+    return Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'Invalid mobile number. Please enter a 10-digit number.',
+    });
+  }
+
    // Prepare data for the registration request
    const requestData = {
      firstname: firstName,
@@ -29,7 +50,14 @@ export default function Signup() {
      address: address,
     isAdmin: false
    };
-
+   if (password.length < 6) {
+    setLoading(false);
+    return Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'Password must be at least 6 characters long.',
+    });
+  }
    // Send a POST request to the server for user registration
    axios.post(`${API_BASE_URL}/signup`, requestData)
      .then((result) => {
@@ -52,25 +80,25 @@ export default function Signup() {
        }
      })
      .catch((error) => {
-       setLoading(false);
-       console.error(error);
+      setLoading(false);
+      console.error(error);
 
-       // Handle registration failure and display appropriate error messages
-       if (error.response.data.error) {
-         const errorMessage = error.response.data.error;
-         Swal.fire({
-           icon: 'error',
-           title: 'Registration failed',
-           text: errorMessage,
-         });
-       } else {
-         Swal.fire({
-           icon: 'error',
-           title: 'Some error occurred',
-         });
-       }
-     });
- };
+      // Handle registration failure and display appropriate error messages
+      if (error.response.data.error) {
+        const errorMessage = error.response.data.error;
+        Swal.fire({
+          icon: 'error',
+          title: 'Registration failed',
+          text: errorMessage,
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Some error occurred',
+        });
+      }
+    });
+};
   return (
     <div>
        <div class="card shadow-lg mx-auto mt-3 mb-4 container" style={{maxWidth: '600px'}}>

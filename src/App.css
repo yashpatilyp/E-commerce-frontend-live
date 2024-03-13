@@ -946,3 +946,24 @@ align-items: center;
   }
  
 }
+
+
+
+.modalcontainer{
+
+}
+
+
+@media only screen and (max-width: 500px) {
+  .modalcontainer h2,
+  .modalcontainer h6,
+  .modalcontainer p,
+  .modalcontainer h5 {
+    font-size: 12px;
+  }
+
+  .modalcontainer h6 {
+    width: 100%;
+    overflow: auto;
+  }
+}

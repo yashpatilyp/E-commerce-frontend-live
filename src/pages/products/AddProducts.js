@@ -48,7 +48,7 @@ const [size, setSize] =useState('');
   
       if (productResponse.status >= 200 && productResponse.status < 300) {
         console.log('Product added successfully:', productResponse.data);
-        toast.success(productResponse.data)
+        toast.success("Product added successfully")
         // Reset form fields
         setProductName('');
         setPrice('');

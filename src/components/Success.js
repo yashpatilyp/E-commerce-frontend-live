@@ -48,7 +48,7 @@ export default function Success() {
           UNIT AMOUNT
         </div>
         <div className="success-description">
-        ₹ {orderDetails.lineItems.reduce((total, item) => total + item.price_data.unit_amount, 0) / 100} /-
+        ₹ {orderDetails.lineItems.reduce((total, item) => total + (item.price_data.unit_amount*item.quantity), 0) / 100} /-
         </div>
         <div className="order-details">
           <div className="order-number-label">Order ID:</div>
