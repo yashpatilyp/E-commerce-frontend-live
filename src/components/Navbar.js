@@ -58,7 +58,7 @@ export default function Navbar() {
               </Link>
             </li>
           ) : ''}
-           {authToken ? (
+           {authToken && !isAdmin? (
           <li className="nav-item">
             <Link className="nav-link" to="/user-orders">
               Orders

@@ -4,7 +4,9 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
-export default function Header() {
+export default function Header({filteredProducts}) {
+ 
+  console.log(filteredProducts)
   const authToken = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
   const userFirstName = user && user.firstname;
@@ -58,11 +60,11 @@ export default function Header() {
               {/* Search Form */}
               <form className="d-flex ms-auto" role="search">
                 <div className="input-box">
-                  {/* Search Icon */}
+                
                   <i className="uil uil-search" />
-                  {/* Search Input Field */}
+                
                   <input type="text" placeholder="Search here..." />
-                  {/* Magnifying Glass Icon */}
+                
                   <i className="fa-solid fa-magnifying-glass" />
                 </div>
               </form>

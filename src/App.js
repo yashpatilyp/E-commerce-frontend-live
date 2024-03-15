@@ -65,7 +65,7 @@ function App() {
           <Route path="/placeorder" element={<PlaceOrder />} />
 
           <Route path="/addProducts" element={<AddProducts />} />
-          <Route path="/allProducts" element={<AllProducts/>} />
+          <Route path="/allProducts" element={<AllProducts />} />
           <Route path="/showproducts" element={<Product_Table />} />
           <Route path="/edit_product/:_id" element={<Product_Edit />} />
 

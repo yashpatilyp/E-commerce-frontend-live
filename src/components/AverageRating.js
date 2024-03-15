@@ -6,7 +6,7 @@ export default function AverageRating({ id, onReviewAdded }) {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true); // Initialize loading as true
 
-  console.log(id);
+  // console.log(id);
 
   const fetchReviews = async () => {
     try {

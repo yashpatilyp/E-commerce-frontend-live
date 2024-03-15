@@ -133,7 +133,7 @@ export default function User_order_table() {
                 </div>
               </div>
               <div className="card-footer text-right">
-                <button onClick={closeModal} className='btn btn-danger'>Close Modal</button>
+                <button onClick={closeModal} className='btn btn-danger btn-sm'>Close Modal</button>
               </div>
             </div>
           </div>
