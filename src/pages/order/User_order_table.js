@@ -22,7 +22,7 @@ export default function User_order_table() {
         setLoading(false);
       } catch (error) {
         console.error('Error fetching orders:', error);
-        toast.error('Error fetching orders. Please try again later.');
+        toast.error(error.response.data.message);
         setLoading(false);
       }
     }
