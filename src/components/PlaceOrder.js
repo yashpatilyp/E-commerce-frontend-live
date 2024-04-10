@@ -161,7 +161,7 @@ const makePayment = async () => {
                         <h5>
                           ₹ {item.price} /- 
                         </h5>
-                        <span>Size: {item.size}</span>  <h5>Quantity: {item.counter}</h5>
+                        {item.size ? <span>Size: {item.size}</span> : null}  <h5>Quantity: {item.counter}</h5>
                       </div>
                       
                       

@@ -4,9 +4,9 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
-export default function Header({filteredProducts}) {
+export default function Header() {
  
-  console.log(filteredProducts)
+  
   const authToken = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
   const userFirstName = user && user.firstname;
@@ -59,14 +59,14 @@ export default function Header({filteredProducts}) {
             >
               {/* Search Form */}
               <form className="d-flex ms-auto" role="search">
-                <div className="input-box">
+                {/* <div className="input-box">
                 
                   <i className="uil uil-search" />
                 
                   <input type="text" placeholder="Search here..." />
                 
                   <i className="fa-solid fa-magnifying-glass" />
-                </div>
+                </div> */}
               </form>
               {/* Right-aligned Navbar Items */}
               <div className="ms-auto d-flex mt-1">

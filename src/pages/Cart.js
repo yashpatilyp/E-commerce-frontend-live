@@ -85,7 +85,7 @@ import { ToastContainer, toast } from 'react-toastify';
                       </h5>
                       <div className="row mb-3 ">
     <div className="col-sm-12">
-      <h5>Size : {item.size}</h5>
+    {item.size ? <h5>Size: {item.size}</h5> : null}
     </div>
     
   </div>

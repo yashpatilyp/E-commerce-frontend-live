@@ -39,7 +39,7 @@ export default function ProductCard({ product }) {
         <div className="card-body" style={{ minHeight: '200px', overflow: 'auto' }} onClick={handleCardClick}>
           <h5 className="card-title">{product.name}</h5>
           <p className="card-text">{product.description}</p>
-          <h6>Size: {product.size}</h6>
+          {product.size && <h6>Size: {product.size}</h6>}
           <div className='p-2'>
             <AverageRating id={product._id} />
           </div>

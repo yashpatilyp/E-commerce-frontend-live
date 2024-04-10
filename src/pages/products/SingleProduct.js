@@ -97,7 +97,7 @@ export default function SingleProduct() {
         <h5>Price : ₹ {singleProduct.price}</h5>
         <p>Price : ₹ {singleProduct.mrp} /-</p>
       
-        <span>Size: {singleProduct.size}</span>
+        {singleProduct.size ? <span>Size: {singleProduct.size}</span> : null}
         <h6>Quantity  ({singleProduct.quantity})</h6>
       </div>
     </div>
