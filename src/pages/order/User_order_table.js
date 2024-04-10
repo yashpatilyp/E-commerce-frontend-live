@@ -121,7 +121,7 @@ export default function User_order_table() {
                             <div className='p-1'>
                               <img src={item.picture} alt="" style={{ height: "80px" }} className='p-1' />
                               <p className="mb-0">Product Name: {item.name}</p>
-                              <p className="mb-0">Quantity: {item.quantity}</p>
+                              <p className="mb-0">Quantity: {item.counter}</p>
                               <p className="mb-0">Size: {item.size}</p>
                               <p className="mb-0 p-1">Price: ₹{item.price}</p>
                             </div>
