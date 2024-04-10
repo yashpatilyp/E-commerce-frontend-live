@@ -51,7 +51,7 @@ export default function ProductCard({ product }) {
           </small>
           <div>
             <h5>
-              {product.price}
+            ₹ {product.price}
               <p>₹ {product.mrp} /-</p>
             </h5>
            

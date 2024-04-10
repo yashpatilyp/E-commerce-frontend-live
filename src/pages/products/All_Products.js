@@ -130,7 +130,7 @@ export default function AllProducts() {
                   </small>
                   <div>
                     <h5>
-                      {product.price}
+                    ₹ {product.price}
                       <p>₹ {product.mrp} /-</p>
                     </h5>
                     <span>Size: {product.size}</span>
