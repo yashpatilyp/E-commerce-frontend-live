@@ -8,24 +8,32 @@ export default function AllProducts() {
   const [loading, setLoading] = useState(true);
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
-
   useEffect(() => {
+    // Define the API endpoint URL for fetching products
     const apiUrl = `${API_BASE_URL}/api/products`;
 
+    // Function to fetch products from the server
     const fetchProducts = async () => {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setAllProducts(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setLoading(false);
-      }
+        try {
+            // Send a GET request to fetch products
+            const response = await fetch(apiUrl);
+            // Parse the response data as JSON
+            const data = await response.json();
+            // Set the fetched products in the state
+            setAllProducts(data);
+        } catch (error) {
+            // Log an error message if fetching products fails
+            console.error('Error fetching products:', error);
+        } finally {
+            // Set loading state to false regardless of success or failure
+            setLoading(false);
+        }
     };
 
+    // Call fetchProducts function when the component mounts (empty dependency array ensures it only runs once)
     fetchProducts();
-  }, []);
+}, []);
+
 
   const navigate = useNavigate();
 

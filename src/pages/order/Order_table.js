@@ -9,49 +9,67 @@ export default function Order_table() {
   const [selectedPaymentId, setSelectedPaymentId] = useState(null);
   const [orderDetails, setOrderDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   useEffect(() => {
+    // Define the API endpoint URL for fetching orders
     const apiUrl = `${API_BASE_URL}/api/orders/get-all-orders`;
 
+    // Function to fetch orders from the server
     const fetchOrders = async () => {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setOrders(data.reverse());
-        setLoading(false);
-        console.log(data);
-      } catch (error) {
-        setLoading(false);
-        toast.error('Error fetching products:', error);
-      }
+        try {
+            // Send a GET request to fetch orders
+            const response = await fetch(apiUrl);
+            // Parse the response data as JSON
+            const data = await response.json();
+            // Set the fetched orders in the state and reverse the order to show the latest orders first
+            setOrders(data.reverse());
+            // Set loading state to false
+            setLoading(false);
+            console.log(data);
+        } catch (error) {
+            // Set loading state to false in case of error
+            setLoading(false);
+            // Display an error message if fetching orders fails
+            toast.error('Error fetching products:', error);
+        }
     };
 
+    // Call fetchOrders function when the component mounts (empty dependency array ensures it only runs once)
     fetchOrders();
-  }, []);
+}, []);
 
-  const fetchOrderByPaymentId = async (paymentId) => {
+// Function to fetch order details by payment ID
+const fetchOrderByPaymentId = async (paymentId) => {
     console.log(paymentId);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/orders/get-order-by-payment-id/${paymentId}`);
-      const data = await response.json();
-      setOrderDetails(data);
-      console.log(data)
-      setIsModalOpen(true);
+        // Send a GET request to fetch order details for the specified payment ID
+        const response = await fetch(`${API_BASE_URL}/api/orders/get-order-by-payment-id/${paymentId}`);
+        // Parse the response data as JSON
+        const data = await response.json();
+        // Set the fetched order details in the state
+        setOrderDetails(data);
+        console.log(data);
+        // Open the modal to display order details
+        setIsModalOpen(true);
     } catch (error) {
-      toast.error('Error fetching order details:', error);
+        // Display an error message if fetching order details fails
+        toast.error('Error fetching order details:', error);
     }
-  };
+};
 
-  const handleDetailsClick = (paymentId) => {
+// Function to handle click event when user wants to view order details
+const handleDetailsClick = (paymentId) => {
     console.log(paymentId);
+    // Set the selected payment ID
     setSelectedPaymentId(paymentId);
+    // Fetch and display order details for the selected payment ID
     fetchOrderByPaymentId(paymentId);
-  };
+};
 
-  const closeModal = () => {
+// Function to close the modal
+const closeModal = () => {
     setIsModalOpen(false);
-  };
-        
+};
+  
       
   return (
           <div className='container summary'>

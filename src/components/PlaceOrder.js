@@ -25,79 +25,97 @@ console.log(user);
 
   const fetchShippingAddresses = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/getShipping-Addresses`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${authToken}`,
-          'Content-Type': 'application/json',
-        },
-      });
+        // Sending a GET request to the server to fetch shipping addresses
+        const response = await fetch(`${API_BASE_URL}/getShipping-Addresses`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${authToken}`, // Including authorization token in the headers
+                'Content-Type': 'application/json', // Specifying content type as JSON
+            },
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        setShippingAddresses(data.shippingAddresses);
-        console.log(data.shippingAddresses);
-      } else {
-        console.error('Error fetching shipping addresses:', response.statusText);
-      }
+        // Checking if the response is successful (status code 2xx)
+        if (response.ok) {
+            // Parsing the response data as JSON
+            const data = await response.json();
+            // Setting the shipping addresses in your application state or performing further actions
+            setShippingAddresses(data.shippingAddresses);
+            // Logging the shipping addresses to the console
+            console.log(data.shippingAddresses);
+        } else {
+            // Logging an error message if the response status is not ok
+            console.error('Error fetching shipping addresses:', response.statusText);
+        }
     } catch (error) {
-      console.error('Error fetching shipping addresses:', error);
+        // Catching and logging any errors that occur during the fetch operation
+        console.error('Error fetching shipping addresses:', error);
     }
-  };
+};
+
         
         //...................................................................
         
-        
-        const calculateSubTotal = () => {
-          return cartItems.reduce((total, item) => {
-            return  total + item.price * item.counter;
-          }, 0);
-        };
-        
-        
-       
-        
-          let cartLength = cartItems.length; 
-         
-          const postal = localStorage.getItem("postalcode");
-          console.log(postal)
-         
-          const filteredAddresses = shippingAddresses.filter(address => Number(address.postalcode) === Number(postal));
-          console.log(filteredAddresses)
+     // Function to calculate the subtotal of items in the cart
+const calculateSubTotal = () => {
+  // Using reduce to sum up the total price of all items in the cart
+  return cartItems.reduce((total, item) => {
+      return total + item.price * item.counter;
+  }, 0);
+};
+
+// Getting the length of the cartItems array
+let cartLength = cartItems.length;
+
+// Retrieving the postal code from local storage
+const postal = localStorage.getItem("postalcode");
+console.log(postal);
+
+// Filtering shipping addresses based on the postal code
+const filteredAddresses = shippingAddresses.filter(address => Number(address.postalcode) === Number(postal));
+console.log(filteredAddresses);
+
      
 //...............................................
-
-const makePayment =async()=>{
-
+const makePayment = async () => {
+  // Load Stripe library
   const stripe = await loadStripe('pk_test_51N7vdjSD3r9BRhLaSVaV19xTJxXaSlfRddM2MRq2GcofsJc8ykfwDPpHXcRP1drgPl6TD30WhvGjnRUiGWBfGdZX00n7z4fp63');
 
+  // Prepare the request body with necessary payment details
+  const body = {
+      products: cartItems, // List of products in the cart
+      subtotal: calculateSubTotal(), // Subtotal of the cart
+      user: user, // Information about the user
+  };
 
-  const body ={
-    products:cartItems,
-    subtotal: calculateSubTotal(),
-    user:user,
+  // Define headers for the request
+  const headers = {
+      "Content-Type": "application/json"
+  };
+
+  // Send a request to your server to create a checkout session
+  const response = await fetch(`${API_BASE_URL}/api/create-checkout-session`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body)
+  });
+
+  // Parse the response to get the session data
+  const session = await response.json();
+
+  // Redirect the user to the Stripe checkout page using the obtained session ID
+  const result = stripe.redirectToCheckout({
+      sessionId: session.id
+  });
+
+  // Log the result of redirectToCheckout for debugging purposes
+  console.log(result);
+
+  // Log any errors if occurred during redirection
+  if (result.error) {
+      console.log(result.error);
   }
-  const headers ={
-    "Content-Type": "application/json"
-  }
-const response = await fetch (`${API_BASE_URL}/api/create-checkout-session`,{
-  method: 'POST',
-  headers: headers,
-  body:JSON.stringify(body)
-})
+};
 
-const session = await response.json();
-
-const result = stripe.redirectToCheckout({
-  sessionId:session.id
- 
-})
-console.log(result)
-
-if (result.error){
-  console.log(result.error)
-}
-}
   return (
           <div style={{minHeight:"500px"}} className='summary'>
 

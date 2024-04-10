@@ -14,56 +14,71 @@
 
     const navigate = useNavigate();
 
-    const AddShippingAddress = async (event) => {
-      event.preventDefault();
-  
-      const authToken = localStorage.getItem("token");
-      const headers = {
+const AddShippingAddress = async (event) => {
+    event.preventDefault();
+
+    // Retrieve the authentication token from local storage
+    const authToken = localStorage.getItem("token");
+
+    // Define headers for the request
+    const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${authToken}`,
-      };
-  
-      const requestData = {
+    };
+
+    // Prepare data for the request
+    const requestData = {
         fullname: fullname,
         mobilenumber: mobile,
         address: address,
         postalcode: postalcode,
         city: city
-      }
-  
-      try {
+    };
+
+    try {
+        // Send a POST request to the server to add the shipping address
         const result = await axios.post(`${API_BASE_URL}/addShipping-Address`, requestData, { headers: headers });
-  
+
+        // If the request is successful (status code 200), handle accordingly
         if (result.status === 200) {
-          console.log(result);
-          toast.success("Shipping Address added successfully", { autoClose: 1000 });
-          localStorage.setItem('postalcode', postalcode);
-          setFullname('');
-          setMobile('');
-          setAddress('');
-          setPostalCode('');
-          setCity('');
-          nextStep();
+            console.log(result);
+            // Display success message
+            toast.success("Shipping Address added successfully", { autoClose: 1000 });
+            // Store postal code in local storage
+            localStorage.setItem('postalcode', postalcode);
+            // Reset form fields
+            setFullname('');
+            setMobile('');
+            setAddress('');
+            setPostalCode('');
+            setCity('');
+            // Navigate to the next step in the process
+            nextStep();
         }
-      } catch (error) {
+    } catch (error) {
         console.error(error);
         
-        // Handle registration failure and display appropriate error messages
+        // Handle errors from the server response
         if (error.response && error.response.data.error) {
-          const errorMessage = error.response.data.error;
-  
-          if (errorMessage === 'Shipping address already exists for this user') {
-            toast.warning(errorMessage);
-            localStorage.setItem('postalcode', postalcode);
-            nextStep();
-          } else {  
-            toast.error(errorMessage);
-          }
+            const errorMessage = error.response.data.error;
+
+            // Display appropriate error messages based on the error received
+            if (errorMessage === 'Shipping address already exists for this user') {
+                toast.warning(errorMessage);
+                // Store postal code in local storage
+                localStorage.setItem('postalcode', postalcode);
+                // Navigate to the next step in the process
+                nextStep();
+            } else {
+                toast.error(errorMessage);
+            }
         } else {
-          toast.error("Some error occurred");
+            // Display a generic error message if no specific error is received
+            toast.error("Some error occurred");
         }
-      }
-    };
+    }
+};
+
 
     return (
       <div>

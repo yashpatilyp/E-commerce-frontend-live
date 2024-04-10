@@ -8,45 +8,57 @@ export default function UpdatePassword() {
   const [newPassword, setNewPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
-
   const updatePassword = async () => {
+    // Retrieve the authentication token from local storage
     const authToken = localStorage.getItem("token");
+
+    // Define headers for the request
     const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
     };
 
     try {
-      const response = await axios.put(
-        `${API_BASE_URL}/userinfo/update-password`,
-        {
-          currentPassword: current,
-          newPassword: newPassword,
-        },
-        {
-          headers,
-        }
-      );
+        // Send a PUT request to the server to update the user's password
+        const response = await axios.put(
+            `${API_BASE_URL}/userinfo/update-password`,
+            {
+                currentPassword: current, // Current password provided by the user
+                newPassword: newPassword, // New password provided by the user
+            },
+            {
+                headers,
+            }
+        );
 
-      if (response.status === 200) {
-        setSuccessMessage(response.data.result);
-        setCurrent("");
-        setNewPassword("");
-        setTimeout(() => {
-          setSuccessMessage(null);
-        }, 2000);
-      } else {
-        setErrorMessage("Failed to update password");
-      }
+        // If the request is successful (status code 200), handle accordingly
+        if (response.status === 200) {
+            // Set success message
+            setSuccessMessage(response.data.result);
+            // Reset current and new password fields
+            setCurrent("");
+            setNewPassword("");
+            // Clear success message after 2 seconds
+            setTimeout(() => {
+                setSuccessMessage(null);
+            }, 2000);
+        } else {
+            // Set error message if the request fails
+            setErrorMessage("Failed to update password");
+        }
     } catch (error) {
-      if (error.response.data.error) {
-        setErrorMessage(error.response.data.error);
-        setTimeout(() => {
-          setErrorMessage(null);
-        }, 2000);
-      }
+        // Handle errors from the server response
+        if (error.response.data.error) {
+            // Set error message received from the server
+            setErrorMessage(error.response.data.error);
+            // Clear error message after 2 seconds
+            setTimeout(() => {
+                setErrorMessage(null);
+            }, 2000);
+        }
     }
-  };
+};
+
   return (
     <div>
       <div className="row">
