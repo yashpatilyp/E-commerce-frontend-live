@@ -52,7 +52,10 @@ console.log(id)
         reviews.map((review) => (
           <div key={review._id} className="card mb-3 m-2" >
             <div className="card-body" style={{marginLeft:"auto",marginRight:"auto"}}>
-              <h3 className="card-title">{review.author.firstname} {review.author.lastname}</h3>
+            {review.author && (
+  <h3 className="card-title">{review.author.firstname} {review.author.lastname}</h3>
+)}
+
               <p className="card-text">Rating: {generateStarRating(review.rating)}</p>
               <p className="card-subtitle mb-2 text-muted">Date: {new Date(review.createdAt).toLocaleDateString()}</p>
               <p className="card-text">Comments: {review.comments}</p>

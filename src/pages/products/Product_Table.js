@@ -96,6 +96,7 @@ export default function Product_Table() {
               <th scope="col">DESCRIPTION</th>
               <th scope="col">SIZE</th>
               <th scope="col">PICTURE</th>
+              <th scope="col">CATEGORY</th>
               <th scope="col">QUANTITY</th>
               <th scope="col">ACTION</th>
             </tr>
@@ -112,6 +113,7 @@ export default function Product_Table() {
                 <td>
                   <img src={product.picture} alt={product.name} style={{ maxWidth: '50px', maxHeight: '50px' }} />
                 </td>
+                <td>{product.category}</td>
                 <td>{product.quantity}</td>
                 <td>
                   <FontAwesomeIcon icon={faEdit} style={{ color: "blue", cursor: "pointer", marginRight:"10px"}}
