@@ -37,7 +37,7 @@ export default function Header() {
           <div className="container-fluid">
             {/* Brand Logo */}
             <Link className="navbar-brand" to="/">
-              <h3>E Commerce</h3>
+              <h3>ShopEase</h3>
             </Link>
             {/* Navbar Toggler for Mobile View */}
             
